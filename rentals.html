@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Car BNB – Rented cars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a class="logo" href="index.html"
+          ><svg
+            width="30"
+            height="30"
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 20l2.5-8A3 3 0 019.4 10h13.2a3 3 0 012.9 2l2.5 8v5h-3v-2H7v2H4z"
+            />
+            <circle cx="9.5" cy="19" r="1" />
+            <circle cx="22.5" cy="19" r="1" /></svg
+          >carbnb</a
+        >
+        <nav>
+          <a href="index.html">Cars</a
+          ><a class="on" href="rentals.html">Rented cars</a
+          ><a href="admin.html" id="adminLink">Admin</a>
+        </nav>
+        <a class="btn pill" href="index.html">Rent a car</a>
+      </div>
+    </header>
+    <main>
+      <div class="hero">
+        <h1>Rented cars</h1>
+        <p>Who has each car, for how long, and when it is free again.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Car</th>
+              <th>Owner</th>
+              <th>Rented by</th>
+              <th>From</th>
+              <th>Until</th>
+              <th>Days</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Available from</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <tr>
+              <td colspan="9">Loading…</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <script src="config.js"></script>
+    <script src="common.js"></script>
+    <script src="rentals.js"></script>
+  </body>
+</html>

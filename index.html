@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Car BNB – Rent a car from locals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a class="logo" href="index.html"
+          ><svg
+            width="30"
+            height="30"
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 20l2.5-8A3 3 0 019.4 10h13.2a3 3 0 012.9 2l2.5 8v5h-3v-2H7v2H4z"
+            />
+            <circle cx="9.5" cy="19" r="1" />
+            <circle cx="22.5" cy="19" r="1" /></svg
+          >carbnb</a
+        >
+        <nav>
+          <a class="on" href="index.html">Cars</a
+          ><a href="rentals.html">Rented cars</a
+          ><a href="admin.html" id="adminLink">Admin</a>
+        </nav>
+        <button class="btn pill" id="listBtn">List your car</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Find a car for your next trip</h1>
+        <p>Rent directly from owners, pay by the day.</p>
+      </div>
+      <div class="filters">
+        <input id="q" type="search" placeholder="Search brand, model or city" />
+        <select id="fFuel">
+          <option value="">Any fuel</option>
+          <option>Petrol</option>
+          <option>Diesel</option>
+          <option>Electric</option>
+          <option>CNG</option>
+          <option>Hybrid</option>
+        </select>
+        <select id="fTrans">
+          <option value="">Any transmission</option>
+          <option>Manual</option>
+          <option>Automatic</option>
+        </select>
+        <select id="fSort">
+          <option value="new">Newest first</option>
+          <option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option>
+        </select>
+      </div>
+      <div id="grid" class="grid"></div>
+    </main>
+
+    <!-- List a car -->
+    <div class="modal" id="listModal">
+      <div class="sheet">
+        <button class="x" data-close aria-label="Close">✕</button>
+        <h2>List your car</h2>
+        <form id="listForm">
+          <fieldset>
+            <legend>About you</legend>
+            <div class="row">
+              <label>Owner name<input name="owner_name" required /></label>
+              <label>Phone<input name="owner_phone" type="tel" /></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Car details</legend>
+            <label
+              >Listing title<input
+                name="title"
+                required
+                placeholder="e.g. Spacious Hyundai Creta for road trips"
+            /></label>
+            <div class="row three">
+              <label
+                >Brand<input name="brand" required placeholder="Hyundai"
+              /></label>
+              <label
+                >Model<input name="model" required placeholder="Creta SX"
+              /></label>
+              <label
+                >Year<input
+                  name="year"
+                  type="number"
+                  min="1990"
+                  max="2030"
+                  required
+              /></label>
+            </div>
+            <div class="row three">
+              <label
+                >Transmission<select name="transmission">
+                  <option>Manual</option>
+                  <option>Automatic</option>
+                </select></label
+              >
+              <label
+                >Fuel<select name="fuel">
+                  <option>Petrol</option>
+                  <option>Diesel</option>
+                  <option>Electric</option>
+                  <option>CNG</option>
+                  <option>Hybrid</option>
+                </select></label
+              >
+              <label
+                >Seats<input
+                  name="seats"
+                  type="number"
+                  min="1"
+                  max="12"
+                  value="5"
+              /></label>
+            </div>
+            <div class="row three">
+              <label
+                >Mileage (km driven)<input name="mileage" type="number" min="0"
+              /></label>
+              <label>Colour<input name="color" /></label>
+              <label
+                >City / pickup location<input name="location" required
+              /></label>
+            </div>
+            <label
+              >Photos (up to 6)<input
+                id="photos"
+                type="file"
+                accept="image/*"
+                multiple
+            /></label>
+            <div class="previews" id="previews"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Price and description</legend>
+            <label
+              >Rent per day (₹)<input
+                name="price_per_day"
+                type="number"
+                min="1"
+                required
+            /></label>
+            <label
+              >Description<textarea
+                name="description"
+                rows="4"
+                placeholder="Condition, features, pickup rules, fuel policy…"
+              ></textarea>
+            </label>
+          </fieldset>
+          <button class="btn block" id="listSubmit">Publish listing</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Car detail -->
+    <div class="modal" id="carModal">
+      <div class="sheet wide" id="carSheet"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <script src="config.js"></script>
+    <script src="common.js"></script>
+    <script src="cars.js"></script>
+  </body>
+</html>
